@@ -3,19 +3,19 @@ package by.gsu.epamlab;
 public class Purchase implements Comparable<Purchase> 
 {
 	private WeekDay week_Day;
-	private final String COMMODITY_NAME="ammunition";
-	private final int PRICE=300000;
-	private int number_Of_Purchases;
+	public static final String COMMODITY_NAME="Ammunition";
+	public static final int PRICE=300000;
+	private int numberOfPurchases;
 	public Purchase() 
 	{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Purchase(WeekDay week_Day, int number_Of_Purchases)
+	public Purchase(WeekDay week_Day, int numberOfPurchases)
 	{
 		super();
 		this.week_Day = week_Day;
-		this.number_Of_Purchases = number_Of_Purchases;
+		this.numberOfPurchases = numberOfPurchases;
 	}
 	public WeekDay getWeek_Day() 
 	{
@@ -25,37 +25,28 @@ public class Purchase implements Comparable<Purchase>
 	{
 		this.week_Day = week_Day;
 	}
-	public String getCommodity_Name() 
-	{
-		return COMMODITY_NAME;
-	}
-	
-	public int getPrice()
-	{
-		return PRICE;
-	}
 
-	public int getNumber_Of_Purchases()
+	public int getNumberOfPurchases()
 	{
-		return number_Of_Purchases;
+		return numberOfPurchases;
 	}
-	public void setNumber_Of_Purchases(int number_Of_Purchases)
+	public void setNumberOfPurchases(int numberOfPurchases)
 	{
-		this.number_Of_Purchases = number_Of_Purchases;
+		this.numberOfPurchases = numberOfPurchases;
 	}
 	public int getCost()
 	{
-		return PRICE*number_Of_Purchases;
+		return PRICE*numberOfPurchases;
 	}
 	
 	
 	public int compareTo(Purchase purchase)
 	{ 
-        if(number_Of_Purchases < purchase.number_Of_Purchases)
+        if(numberOfPurchases < purchase.numberOfPurchases)
         {
             return -1;
         }
-        else   if(number_Of_Purchases>purchase.number_Of_Purchases)
+        else   if(numberOfPurchases>purchase.numberOfPurchases)
         {
         	return 1;
         }	
@@ -64,6 +55,17 @@ public class Purchase implements Comparable<Purchase>
 	
 	public String toString() {
 		// TODO Auto-generated method stub
-		return number_Of_Purchases+";"+week_Day;
+		return numberOfPurchases+";"+week_Day+";"+getCost()+";";
 	}
+	 public static void SHOW(Purchase[] purchases)
+     {
+		 if (purchases.length>0)
+	   {
+    	 System.out.println("Name:"+Purchase.COMMODITY_NAME+";"+"Price="+Purchase.PRICE);
+         for (Purchase purchase:purchases)
+         {
+         System.out.println(purchase);
+         }
+	   }  
+     }
 }
